@@ -2,9 +2,9 @@
 
 {% block content %}
     {% block sources %}
-        <div class="source">
-            {{ post.source }}
-        </div>
+        {% autoescape off %}
+            {{ sources }}
+        {% endautoescape %}
     {% endblock %}
 
 {% endblock %}

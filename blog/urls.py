@@ -2,6 +2,6 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('', views.post_list, name='post_list'),
-    path('ktshop/', views.ktshop_source)
+    #path('', views.post_list, name='post_list'),#
+    path('', views.ktshop_source, name='ktshop'),
 ]

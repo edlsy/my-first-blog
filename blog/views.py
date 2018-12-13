@@ -10,9 +10,10 @@ def post_list(request):
     return render(request, 'blog/post_list.html', {'posts':posts})
 
 def ktshop_source(request):
-    ktshop_url = 'https://shop.kt.com/smart/agncyInfoView.do?vndrNo=AA01344'
+    ktshop_url = 'https://m.shop.kt.com:444/m/smart/agncyInfoView.do?vndrNo=AA01344'
     html = urlopen(ktshop_url)
     bsObj = bs4.BeautifulSoup(html, "html.parser")
-    target_source = bsObj.find("ul", {"class":"ProdLst"})
-    return HttpResponse(target_source)
+    target_source = bsObj.find("ul", {"class":"highProd"})
+    #return HttpResponse(target_source)
+    return render(request, 'blog/ktshop.html', {'sources':target_source})
 
