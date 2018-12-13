@@ -15,5 +15,11 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-class Ktshop(models.Model):
-    source = models.TextField()
+class Product(models.Model):
+    name = models.CharField(max_length=30, primary_key=True)
+    code = models.CharField(max_length=20)
+    price = models.IntegerField()
+    img_link = models.CharField(max_length=200, default="")
+
+    def __str__(self):
+        return self.name
