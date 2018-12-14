@@ -4,7 +4,7 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from .models import Post, Product
 
-ktshop_url = "https://m.shop.kt.com:444/m/smart/agncyInfoView.do?vndrNo=AA01344"
+ktshop_url = "https://m.shop.kt.com:444/m/smart/agncyInfoView.do?vndrNo=AA01344&sortProd=SALE"
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -24,7 +24,7 @@ def ktshop_product_info(request):
 
     for idx, prodInfo in enumerate(prodInfo_blocks):
         item_name[idx] = prodInfo.ul.find("li", {"class": "prodName"}).text
-        item_price[idx] = int(prodInfo.ul.find("li", {"class": "prodPrice"}).span.text.replace(',',''))
+        item_price[idx] = prodInfo.ul.find("li", {"class": "prodPrice"}).span.text
         href_value = prodInfo.ul.find("li", {"class": "prodSupport"}).findAll("a")[0].attrs['href']
         item_code[idx] = href_value[25:35]
 

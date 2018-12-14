@@ -2,13 +2,16 @@
 
 {% block content %}
     {% for product in products %}
-        <div class="product">
-            <div>
-                <a href="https://shop.kt.com/smart/productView.do?prodNo={{ product.code }}&vndrNo=AA01344">
-                    <img src="{{ product.img_link }}"></a>
-            </div>
-            <h3><a href="">{{ product.name }}</a></h3>
-            <div>{{ product.price }}원</div>
+        <div class="thumbnails col-xs-12 col-sm-6 col-md-4">
+            <a href="https://shop.kt.com/smart/productView.do?prodNo={{ product.code }}&vndrNo=AA01344" target="_blank">
+                <img src="{{ product.img_link }}" alt="..." style="height:300px;" class="img-responsive center-block"/>
+            </a>
+            <a href="https://shop.kt.com/smart/productView.do?prodNo={{ product.code }}&vndrNo=AA01344">
+                <div class="prodInfo center-block">
+                    <div class="prodName">{{ product.name }}</div>
+                    <div class="prodPrice">월 <span>{{ product.price }}</span>원~</div>
+                </div>
+            </a>
         </div>
     {% endfor %}
 {% endblock %}
